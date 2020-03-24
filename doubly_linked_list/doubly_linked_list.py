@@ -66,7 +66,11 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node."""
     def remove_from_head(self):
-        value = self.head.value 
+        # did this bc if there's no head, then head is None and doesn't have attr .head
+        try:
+            value = self.head.value 
+        except:
+            value = self.head
         self.delete(self.head)
         return value 
 
@@ -88,7 +92,11 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        value = self.tail.value 
+        # did this bc if there's no tail, then tail is None and doesn't have attr .head
+        try:
+            value = self.tail.value 
+        except:
+            value = self.tail
         self.delete(self.tail) 
         return value
 
@@ -116,7 +124,8 @@ class DoublyLinkedList:
         # TODO: Catch errors if list is empty or
         # node is not in list
         # For now assume node is in list
-        self.length -= 1
+        if self.length > 0:
+            self.length -= 1
         # if head and tail 
         if self.head is self.tail:
             self.head = None 

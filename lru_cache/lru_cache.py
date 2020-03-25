@@ -27,7 +27,7 @@ class LRUCache:
             # move k,v pair so considered most-recent
             self.dll.move_to_front(self.storage[key])
             return (self.storage[key]).value
-        except:
+        except KeyError:
             return None
 
     """

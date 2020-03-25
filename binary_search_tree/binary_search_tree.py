@@ -12,21 +12,41 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        # create a new instance of BinarySearchTree w/ the new value 
+        # if there's no Queue, then initialize one 
+        # initialize variable current as the queue head
+        # if new value is less than current.value, current becomes current.left
+        # if new val < current.value & current.left==None, then current.left==BinarySearchTree(val) & break
+        # if the new value is greater than current.value, current becomes current.right
+        # if new val > current.value & current.right==None, then current.right==BinarySearchTree(val) & break
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # initialize var current as queue head
+        # if target==current.value, return 1
+        # if current==None, return 0
+        # if target < current.value, current becomes current.left 
+        # if target > current.value, current becomes current.left 
+        # return True if total > than 0 else False 
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # start at the root 
+        # intialize var current as head/root
+        # while current is not None
+        # current = current.right
+        # if current is None, return no max/NA, or maybe just return (do nothing)
+        # else return current.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        # initialize current as head 
+        # base case is None, so
+        # if current is None, stop/do nothing/maybe return None 
+        # call the function recursively in the return statement 
+
 
     # DAY 2 Project -----------------------
 

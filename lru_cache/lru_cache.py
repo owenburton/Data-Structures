@@ -1,3 +1,5 @@
+from doubly_linked_list import DoublyLinkedList, ListNode
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -10,7 +12,7 @@ class LRUCache:
         self.limit = limit 
         self.size = 0
         self.dll = DoublyLinkedList()
-        self.storage = {None,None for k,v in enumerate(limit)}
+        self.storage = {}
         
 
     """
@@ -21,10 +23,10 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        # move k,v pair so considered most-recent
-
         try:
-            return self.storage[key]
+            # move k,v pair so considered most-recent
+            self.dll.move_to_front(self.storage[key])
+            return (self.storage[key]).value
         except:
             return None
 
@@ -39,6 +41,33 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        # if size == limit, remove oldest
-        # if key exists, overwrite old value
-        # make added pair most recent used
+        size_before = self.dll.length
+
+        try:
+            node = self.storage[key]
+            self.dll.move_to_front(node)
+            self.dll.head.value = value
+            self.storage[key] = self.dll.head
+        except:
+            self.dll.add_to_head(value)
+            self.storage[key] = self.dll.head
+
+        # if over limit, remove oldest
+        if self.dll.length > self.limit:
+            deleted = self.dll.remove_from_tail()
+            for k,v in self.storage.items():
+                if v==deleted:
+                    self.storage.pop(k)
+                    break
+
+    
+    def print_dll(self):
+        current = self.dll.head 
+        out = []
+        while current:
+            out.append(current.value)
+            current = current.next
+        return ','.join(out)
+         
+        
+

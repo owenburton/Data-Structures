@@ -64,7 +64,7 @@ class BinarySearchTree:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        if self.right==None:
+        if not self.right:
             return self.value
         return self.right.get_max()
         

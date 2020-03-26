@@ -99,6 +99,15 @@ class BinarySearchTree:
     def bft_print(self, node):
         pass
 
+    ## PLAN FOR DFT
+    # initialize a stack 
+    # push root to stack 
+    # while stack not empty 
+    # pop top item out of stack to temp 
+    # apply a function to temp 
+    # if temp has right, put right in stack 
+    # if temp has left, put left in stack
+
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):

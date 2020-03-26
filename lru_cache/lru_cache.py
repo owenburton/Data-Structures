@@ -41,14 +41,14 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        size_before = self.dll.length
+        # size_before = self.dll.length
 
         try:
             node = self.storage[key]
             self.dll.move_to_front(node)
             self.dll.head.value = value
             self.storage[key] = self.dll.head
-        except:
+        except KeyError:
             self.dll.add_to_head(value)
             self.storage[key] = self.dll.head
 

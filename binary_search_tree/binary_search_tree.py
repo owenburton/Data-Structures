@@ -49,7 +49,7 @@ class BinarySearchTree:
             return 1
     
         return 1 in (self.left.contains(target) if self.left else 0, \
-                        self.right.contains(target) if self.right else 0)
+                     self.right.contains(target) if self.right else 0)
         
         
         
